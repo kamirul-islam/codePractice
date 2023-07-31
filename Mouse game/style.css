@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.scoreBoard{
+    max-width: 1200px;
+    margin: 20px auto 0;
+}
+.score{
+ display: block;
+}
+#container {
+    max-width: 1200px;
+    height: 700px;
+    margin: auto;
+    padding: 25px;
+    border: 2px solid #000;
+}
+
+.bubble {
+    display: inline-block;
+    height: 160px;
+    width: 160px;
+    line-height: 160px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.bubble:hover {
+    background-color: #2980b9;
+}
+
+.hidden {
+    display: none;
+  }
+#message{
+    margin-top: 100px;
+    text-align: center;
+    font-size: 64px;
+
+}
+#startButton{
+    margin: 200px auto;
+    font-size: 36px;
+}
