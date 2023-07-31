@@ -1,0 +1,48 @@
+body {
+  max-width: 600px;
+  margin: 20vh auto 0 auto;
+  height: 80vh;
+  background-color: #f0f0f0;
+}
+.score-container{
+display: flex;
+justify-content: space-between;
+width: 600px;
+}
+#gameContainer {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  border: 2px solid #000;
+  font-size: 48px;
+  text-align: center;
+  line-height: 400px;
+  padding: 50px 0;
+}
+
+#score {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+#lives {
+  font-size: 30px;
+}
+
+.alphabet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+#gameContainer button{
+  padding: 10px;
+  background-color: #AAA;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
