@@ -46,3 +46,6 @@ width: 600px;
   font-size: 18px;
   cursor: pointer;
 }
+#gameContainer button:hover{
+  background-color: #888;
+}

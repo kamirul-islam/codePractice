@@ -1,4 +1,8 @@
 let score = 0;
+let right = 0;
+let wrong = 0;
+const bubble = document.getElementById('bubble');
+const start = document.getElementById('startGame');
 
 function getRandomAction() {
   const actions = ['Left Click', 'Right Click'];
@@ -7,10 +11,11 @@ function getRandomAction() {
 }
 
 function showRandomAction() {
-    const container = document.getElementById('container')
-  const bubble = document.getElementById('bubble');
-  const screenWidth = 1150;
-  const screenHeight = 650;
+  start.style.display = 'none'
+  bubble.style.display = 'inline-block'
+  const container = document.getElementById('container')
+  const screenWidth = container.clientWidth - 70;
+  const screenHeight = container.clientHeight - 70;
   const bubbleWidth = bubble.offsetWidth;
   const bubbleHeight = bubble.offsetHeight;
   console.log(bubbleWidth)
@@ -33,14 +38,20 @@ function handleMouseClick(event) {
     (clickedAction === 'Right Click' && !isLeftClick)
   ) {
     score = score + 10;
+    right ++
+    playRightSound()
   } else {
     score = score - 5;
+    wrong ++
+    playWrongSound()
   }
 
   document.getElementById('score').innerText = score;
-  if (score === 100) {
+  document.getElementById('right').innerHTML = right;
+  document.getElementById('wrong').innerHTML = wrong;
+  if (score > 99) {
     showCongratulation();
-  } else if (score === -10) {
+  } else if (score < -9) {
     showGameOver();
   } else {
     showRandomAction();
@@ -48,29 +59,53 @@ function handleMouseClick(event) {
 }
 
 function showCongratulation() {
-    bubble.style.display = 'none';
-    document.getElementById('message').innerText = 'Congratulations!';
-    document.getElementById('message').classList.remove('hidden');
-    document.getElementById('startButton').style.display = 'block';
-    document.getElementById('startButton').addEventListener('click', restartGame);
-  }
-  
-  function showGameOver() {
-    bubble.style.display = 'none';
-    document.getElementById('message').innerText = 'Game Over !';
-    document.getElementById('message').classList.remove('hidden');
-    document.getElementById('startButton').style.display = 'block';
-    document.getElementById('startButton').addEventListener('click', restartGame);
-  }
-  
-  function restartGame() {
-    document.location.reload(true)
-  }
+  bubble.style.display = 'none';
+  document.getElementById('message').innerText = 'Congratulations!';
+  document.getElementById('message').style.display = 'block';
+  document.getElementById('startButton').style.display = 'block';
+  document.getElementById('startButton').addEventListener('click', restartGame);
+}
 
-document.getElementById('bubble').addEventListener('contextmenu', (e) => e.preventDefault()); // Prevent the context menu from appearing on right-click.
+function showGameOver() {
+  bubble.style.display = 'none';
+  document.getElementById('message').innerText = 'Game Over !';
+  document.getElementById('message').style.display = 'block';
+  document.getElementById('startButton').style.display = 'block';
+  document.getElementById('startButton').addEventListener('click', restartGame);
+}
 
-document.getElementById('bubble').addEventListener('click', handleMouseClick);
-document.getElementById('bubble').addEventListener('contextmenu', handleMouseClick);
+function startGame() {
+  bubble.style.display = 'none'
+}
 
-// Initial display of the bubble action
-showRandomAction();
+function restartGame() {
+  score = 0;
+  right = 0;
+  wrong = 0;
+  document.getElementById('score').innerText = score;
+  document.getElementById('right').innerHTML = right;
+  document.getElementById('wrong').innerHTML = wrong;
+  document.getElementById('message').style.display = 'none';
+  document.getElementById('startButton').style.display = 'none';
+  showRandomAction()
+}
+
+function playRightSound() {
+  const keyPressSound = document.getElementById('keyPressSound');
+  keyPressSound.currentTime = 0; // Reset the sound to start from the beginning
+  keyPressSound.play();
+}
+
+function playWrongSound() {
+  const keyPressSound = document.getElementById('wrongSound');
+  keyPressSound.currentTime = 0; // Reset the sound to start from the beginning
+  keyPressSound.play();
+}
+
+bubble.addEventListener('contextmenu', (e) => e.preventDefault()); // Prevent the context menu from appearing on right-click.
+
+bubble.addEventListener('click', handleMouseClick);
+bubble.addEventListener('contextmenu', handleMouseClick);
+start.addEventListener('click', showRandomAction)
+// Initial display of the bubble action;
+startGame()

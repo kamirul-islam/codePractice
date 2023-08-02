@@ -64,11 +64,13 @@ document.addEventListener('keydown', (event) => {
       showRandomAlphabet();
     }
   } else {
-    wrongKeyPressSound()
+    if ((lives > 0) && (score < 10)) {
+      wrongKeyPressSound()
     lives--;
     updateLives();
     if (lives === 0) {
       gameOver();
+    }
     }
   }
 });

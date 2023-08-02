@@ -5,14 +5,21 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <audio id="keyPressSound" src="./audio/key press.wav"></audio>
+  <audio id="wrongSound" src="./audio/wrong key press.mp3"></audio>
     <h1 align="center">Mouse Click Practice.</h1>
     <div class="scoreBoard">
         <h1 class="score">Score: <span id="score">0</span></h1>
+        <div>
+          <h2>Right click : <span id="right">0</span></h2>
+          <h2>Wrong click : <span id="wrong">0</span></h2>
+        </div>
     </div>
   <div id="container">
     <div class="bubble" id="bubble">Click Me!</div>
     <div id="message" class="hidden"></div>
     <button id="startButton" class="hidden">Restart Game</button>
+    <button id="startGame">Start Game</button>
   </div>
   <p style="font-size: 20px; max-width: 1200px; margin: 20px auto;"><b>Note: </b>To update your Mouse Click skill, Please click on the popup button which you could see.</p>
   <script src="script.js"></script>

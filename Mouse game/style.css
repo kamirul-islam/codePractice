@@ -7,31 +7,34 @@ body {
 }
 .scoreBoard{
     max-width: 1200px;
-    margin: 20px auto 0;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .score{
  display: block;
 }
 #container {
     max-width: 1200px;
-    height: 700px;
+    height: 650px;
     margin: auto;
     padding: 25px;
     border: 2px solid #000;
 }
 
 .bubble {
-    display: inline-block;
-    height: 160px;
-    width: 160px;
-    line-height: 160px;
+    display: none;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
     border-radius: 50%;
     background-color: #3498db;
     color: #fff;
     text-align: center;
     font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.7s ease;
     position: relative;
 }
 
@@ -51,4 +54,9 @@ body {
 #startButton{
     margin: 200px auto;
     font-size: 36px;
+}
+#startGame{
+    margin: 280px auto;
+    font-size: 36px;
+    display: block;
 }
