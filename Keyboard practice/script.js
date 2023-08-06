@@ -29,14 +29,9 @@ function wrongKeyPressSound() {
 }
 
 function showRandomAlphabet() {
-  const alphabetElements = document.getElementsByClassName('alphabet');
+  const alphabetElements = document.getElementById('letter');
   const randomAlphabet = getRandomAlphabet();
-
-  for (const element of alphabetElements) {
-    element.style.display = 'none';
-  }
-
-  document.getElementById('letter' + randomAlphabet).style.display = 'block';
+  return alphabetElements.innerHTML = randomAlphabet
 }
 
 function gameOver() {
@@ -52,12 +47,11 @@ function congratulations() {
 }
 
 document.addEventListener('keydown', (event) => {
-  const currentAlphabet = document.querySelector('.alphabet[style*="display: block;"]');
+  const currentAlphabet = document.getElementById('letter');
   if (currentAlphabet && event.key.toUpperCase() === currentAlphabet.textContent) {
     playKeyPressSound();
     score++;
     updateScore();
-    currentAlphabet.style.display = 'none';
     if (score === 10) {
       congratulations();
     } else {

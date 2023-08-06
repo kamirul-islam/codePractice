@@ -91,7 +91,7 @@ function restartGame() {
 }
 
 function playRightSound() {
-  const keyPressSound = document.getElementById('keyPressSound');
+  const keyPressSound = document.getElementById('clickSound');
   keyPressSound.currentTime = 0; // Reset the sound to start from the beginning
   keyPressSound.play();
 }
@@ -100,6 +100,12 @@ function playWrongSound() {
   const keyPressSound = document.getElementById('wrongSound');
   keyPressSound.currentTime = 0; // Reset the sound to start from the beginning
   keyPressSound.play();
+}
+function handleEnterKey(event) {
+  // Check if the pressed key is Enter (keyCode 13) or Enter (code "Enter")
+  if (event.key === "Enter" || event.keyCode === 13) {
+    handleMouseClick();
+  }
 }
 
 bubble.addEventListener('contextmenu', (e) => e.preventDefault()); // Prevent the context menu from appearing on right-click.
